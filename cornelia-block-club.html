@@ -1,0 +1,960 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Cornelia Block Club | East Lakeview, Chicago</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,600;9..144,700&family=Source+Sans+3:wght@400;500;600&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --color-primary: #2E5A4C;
+      --color-primary-light: #4A8B75;
+      --color-accent: #E07A3D;
+      --color-accent-light: #F4A574;
+      --color-bg: #FAF8F5;
+      --color-bg-alt: #F0EDE8;
+      --color-card: #FFFFFF;
+      --color-text: #2C2C2C;
+      --color-text-muted: #6B6B6B;
+      --color-border: #E5E2DC;
+      --font-display: 'Fraunces', Georgia, serif;
+      --font-body: 'Source Sans 3', -apple-system, sans-serif;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: var(--font-body);
+      background-color: var(--color-bg);
+      color: var(--color-text);
+      line-height: 1.6;
+    }
+
+    /* Subtle texture overlay */
+    body::before {
+      content: '';
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      pointer-events: none;
+      opacity: 0.03;
+      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E");
+      z-index: 1000;
+    }
+
+    a {
+      color: var(--color-primary);
+      text-decoration: none;
+      transition: color 0.2s ease;
+    }
+
+    a:hover {
+      color: var(--color-accent);
+    }
+
+    /* Header */
+    header {
+      background: var(--color-card);
+      border-bottom: 1px solid var(--color-border);
+      position: sticky;
+      top: 0;
+      z-index: 100;
+    }
+
+    .header-inner {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 1rem 1.5rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .logo {
+      font-family: var(--font-display);
+      font-size: 1.25rem;
+      font-weight: 600;
+      color: var(--color-primary);
+    }
+
+    .logo span {
+      color: var(--color-accent);
+    }
+
+    nav {
+      display: flex;
+      gap: 0.25rem;
+    }
+
+    nav a {
+      padding: 0.5rem 1rem;
+      border-radius: 6px;
+      font-weight: 500;
+      font-size: 0.95rem;
+      color: var(--color-text-muted);
+      transition: all 0.2s ease;
+    }
+
+    nav a:hover {
+      background: var(--color-bg-alt);
+      color: var(--color-text);
+    }
+
+    nav a.active {
+      background: var(--color-primary);
+      color: white;
+    }
+
+    /* Mobile nav toggle */
+    .nav-toggle {
+      display: none;
+      background: none;
+      border: none;
+      cursor: pointer;
+      padding: 0.5rem;
+    }
+
+    .nav-toggle svg {
+      width: 24px;
+      height: 24px;
+      stroke: var(--color-text);
+    }
+
+    /* Hero */
+    .hero {
+      background: linear-gradient(135deg, var(--color-primary) 0%, #3D7A68 100%);
+      color: white;
+      padding: 4rem 1.5rem;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background-image: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M30 0L60 30L30 60L0 30z' fill='%23ffffff' fill-opacity='0.03'/%3E%3C/svg%3E");
+      background-size: 30px 30px;
+    }
+
+    .hero-content {
+      position: relative;
+      max-width: 700px;
+      margin: 0 auto;
+    }
+
+    .hero-badge {
+      display: inline-block;
+      background: rgba(255,255,255,0.15);
+      padding: 0.4rem 1rem;
+      border-radius: 50px;
+      font-size: 0.85rem;
+      font-weight: 500;
+      margin-bottom: 1.5rem;
+      letter-spacing: 0.02em;
+    }
+
+    .hero h1 {
+      font-family: var(--font-display);
+      font-size: clamp(2.5rem, 6vw, 3.5rem);
+      font-weight: 700;
+      line-height: 1.15;
+      margin-bottom: 0.75rem;
+    }
+
+    .hero-subtitle {
+      font-size: 1.25rem;
+      opacity: 0.9;
+      margin-bottom: 1.5rem;
+    }
+
+    .hero p {
+      font-size: 1.1rem;
+      opacity: 0.85;
+      max-width: 550px;
+      margin: 0 auto;
+    }
+
+    /* Main content */
+    main {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 3rem 1.5rem;
+    }
+
+    section {
+      margin-bottom: 4rem;
+    }
+
+    section:last-child {
+      margin-bottom: 0;
+    }
+
+    h2 {
+      font-family: var(--font-display);
+      font-size: 1.75rem;
+      font-weight: 600;
+      color: var(--color-primary);
+      margin-bottom: 1.5rem;
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+    }
+
+    h2 .icon {
+      width: 32px;
+      height: 32px;
+      background: var(--color-bg-alt);
+      border-radius: 8px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.25rem;
+    }
+
+    h3 {
+      font-family: var(--font-display);
+      font-size: 1.25rem;
+      font-weight: 600;
+      color: var(--color-text);
+      margin-bottom: 0.75rem;
+    }
+
+    /* Cards grid */
+    .cards {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 1.25rem;
+    }
+
+    .card {
+      background: var(--color-card);
+      border: 1px solid var(--color-border);
+      border-radius: 12px;
+      padding: 1.5rem;
+      transition: all 0.2s ease;
+    }
+
+    .card:hover {
+      border-color: var(--color-primary-light);
+      box-shadow: 0 4px 20px rgba(46, 90, 76, 0.08);
+      transform: translateY(-2px);
+    }
+
+    .card-icon {
+      width: 48px;
+      height: 48px;
+      background: var(--color-bg-alt);
+      border-radius: 10px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.5rem;
+      margin-bottom: 1rem;
+    }
+
+    .card h3 {
+      margin-bottom: 0.5rem;
+    }
+
+    .card p {
+      color: var(--color-text-muted);
+      font-size: 0.95rem;
+      margin-bottom: 1rem;
+    }
+
+    .card-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.35rem;
+      font-weight: 600;
+      font-size: 0.9rem;
+      color: var(--color-primary);
+    }
+
+    .card-link:hover {
+      gap: 0.5rem;
+    }
+
+    .card-link svg {
+      width: 16px;
+      height: 16px;
+      transition: transform 0.2s ease;
+    }
+
+    .card:hover .card-link svg {
+      transform: translateX(3px);
+    }
+
+    /* Resource tables */
+    .resource-section {
+      background: var(--color-card);
+      border: 1px solid var(--color-border);
+      border-radius: 12px;
+      padding: 1.5rem;
+      margin-bottom: 1.5rem;
+    }
+
+    .resource-section h3 {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      padding-bottom: 0.75rem;
+      border-bottom: 1px solid var(--color-border);
+      margin-bottom: 1rem;
+    }
+
+    .resource-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 1rem;
+    }
+
+    .resource-item {
+      display: flex;
+      flex-direction: column;
+      gap: 0.25rem;
+    }
+
+    .resource-item .label {
+      font-size: 0.8rem;
+      font-weight: 600;
+      color: var(--color-text-muted);
+      text-transform: uppercase;
+      letter-spacing: 0.04em;
+    }
+
+    .resource-item .value {
+      font-size: 1rem;
+    }
+
+    .resource-item .value a {
+      font-weight: 500;
+    }
+
+    /* 311 Quick actions */
+    .quick-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+      margin-top: 1rem;
+    }
+
+    .quick-action {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.35rem;
+      padding: 0.5rem 0.85rem;
+      background: var(--color-bg);
+      border: 1px solid var(--color-border);
+      border-radius: 50px;
+      font-size: 0.85rem;
+      font-weight: 500;
+      color: var(--color-text);
+      transition: all 0.2s ease;
+    }
+
+    .quick-action:hover {
+      background: var(--color-primary);
+      border-color: var(--color-primary);
+      color: white;
+    }
+
+    /* CTA Section */
+    .cta-section {
+      background: var(--color-bg-alt);
+      border-radius: 16px;
+      padding: 2.5rem;
+      text-align: center;
+    }
+
+    .cta-section h2 {
+      justify-content: center;
+      margin-bottom: 0.75rem;
+    }
+
+    .cta-section p {
+      color: var(--color-text-muted);
+      margin-bottom: 1.5rem;
+      max-width: 500px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      padding: 0.85rem 1.75rem;
+      background: var(--color-accent);
+      color: white;
+      border-radius: 8px;
+      font-weight: 600;
+      font-size: 1rem;
+      transition: all 0.2s ease;
+      border: none;
+      cursor: pointer;
+    }
+
+    .btn:hover {
+      background: var(--color-primary);
+      color: white;
+      transform: translateY(-1px);
+      box-shadow: 0 4px 12px rgba(46, 90, 76, 0.2);
+    }
+
+    .btn svg {
+      width: 18px;
+      height: 18px;
+    }
+
+    /* Footer */
+    footer {
+      background: var(--color-primary);
+      color: white;
+      padding: 2.5rem 1.5rem;
+      margin-top: 4rem;
+    }
+
+    .footer-inner {
+      max-width: 1100px;
+      margin: 0 auto;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      align-items: center;
+      gap: 1.5rem;
+    }
+
+    .footer-brand {
+      font-family: var(--font-display);
+      font-size: 1.1rem;
+      font-weight: 600;
+    }
+
+    .footer-links {
+      display: flex;
+      gap: 1.5rem;
+    }
+
+    .footer-links a {
+      color: rgba(255,255,255,0.8);
+      font-size: 0.9rem;
+    }
+
+    .footer-links a:hover {
+      color: white;
+    }
+
+    .footer-note {
+      width: 100%;
+      text-align: center;
+      padding-top: 1.5rem;
+      margin-top: 1.5rem;
+      border-top: 1px solid rgba(255,255,255,0.15);
+      font-size: 0.85rem;
+      opacity: 0.7;
+    }
+
+    /* Tab navigation for sections */
+    .tab-nav {
+      display: flex;
+      gap: 0.5rem;
+      margin-bottom: 2rem;
+      flex-wrap: wrap;
+    }
+
+    .tab-btn {
+      padding: 0.6rem 1.25rem;
+      background: var(--color-card);
+      border: 1px solid var(--color-border);
+      border-radius: 8px;
+      font-family: var(--font-body);
+      font-size: 0.95rem;
+      font-weight: 500;
+      color: var(--color-text-muted);
+      cursor: pointer;
+      transition: all 0.2s ease;
+    }
+
+    .tab-btn:hover {
+      border-color: var(--color-primary-light);
+      color: var(--color-text);
+    }
+
+    .tab-btn.active {
+      background: var(--color-primary);
+      border-color: var(--color-primary);
+      color: white;
+    }
+
+    .tab-content {
+      display: none;
+    }
+
+    .tab-content.active {
+      display: block;
+      animation: fadeIn 0.3s ease;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(8px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    /* Responsive */
+    @media (max-width: 768px) {
+      .nav-toggle {
+        display: block;
+      }
+
+      nav {
+        display: none;
+        position: absolute;
+        top: 100%;
+        left: 0;
+        right: 0;
+        background: var(--color-card);
+        border-bottom: 1px solid var(--color-border);
+        flex-direction: column;
+        padding: 1rem;
+        gap: 0.5rem;
+      }
+
+      nav.open {
+        display: flex;
+      }
+
+      .hero {
+        padding: 3rem 1.5rem;
+      }
+
+      .cta-section {
+        padding: 2rem 1.5rem;
+      }
+
+      .footer-inner {
+        flex-direction: column;
+        text-align: center;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="header-inner">
+      <div class="logo">Cornelia <span>Block Club</span></div>
+      <button class="nav-toggle" onclick="document.querySelector('nav').classList.toggle('open')" aria-label="Toggle menu">
+        <svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" d="M4 6h16M4 12h16M4 18h16"/>
+        </svg>
+      </button>
+      <nav>
+        <a href="#home" class="active">Home</a>
+        <a href="#resources">Resources</a>
+        <a href="#block-party">Block Party</a>
+        <a href="#connect">Connect</a>
+      </nav>
+    </div>
+  </header>
+
+  <section class="hero" id="home">
+    <div class="hero-content">
+      <div class="hero-badge">🌳 East Lakeview, Chicago</div>
+      <h1>Welcome to Cornelia Ave</h1>
+      <p class="hero-subtitle">Between Elaine Place & Broadway</p>
+      <p>We're neighbors on one of Lakeview's great tree-lined blocks. This site is a simple way to stay connected, find local resources, and make our corner of Chicago a little better.</p>
+    </div>
+  </section>
+
+  <main>
+    <!-- Quick Links -->
+    <section>
+      <h2><span class="icon">🏠</span> Quick Links</h2>
+      <div class="cards">
+        <a href="#resources" class="card">
+          <div class="card-icon">📋</div>
+          <h3>Local Resources</h3>
+          <p>Ward contacts, 311 info, school lookups, and everything civic for our block.</p>
+          <span class="card-link">
+            View resources
+            <svg fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"/></svg>
+          </span>
+        </a>
+        <a href="#block-party" class="card">
+          <div class="card-icon">🎉</div>
+          <h3>Block Party</h3>
+          <p>Info about our twice-yearly block parties and how to help plan them.</p>
+          <span class="card-link">
+            Learn more
+            <svg fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"/></svg>
+          </span>
+        </a>
+        <a href="#connect" class="card">
+          <div class="card-icon">🤝</div>
+          <h3>Get Involved</h3>
+          <p>Sign up for updates, share ideas, or just say hello to your neighbors.</p>
+          <span class="card-link">
+            Connect
+            <svg fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"/></svg>
+          </span>
+        </a>
+      </div>
+    </section>
+
+    <!-- Resources Section -->
+    <section id="resources">
+      <h2><span class="icon">📋</span> Local Resources</h2>
+      
+      <div class="tab-nav">
+        <button class="tab-btn active" data-tab="wards">Ward Info</button>
+        <button class="tab-btn" data-tab="police">Police</button>
+        <button class="tab-btn" data-tab="311">Report Issues</button>
+        <button class="tab-btn" data-tab="schools">Schools</button>
+        <button class="tab-btn" data-tab="emergency">Emergency</button>
+      </div>
+
+      <!-- Ward Info Tab -->
+      <div class="tab-content active" id="tab-wards">
+        <p style="margin-bottom: 1.5rem; color: var(--color-text-muted);">Our block is split between two wards. Check your specific address at <a href="https://chicagoelections.gov/districts-maps/ward-maps-electeds" target="_blank">chicagoelections.gov</a>.</p>
+        
+        <div class="resource-section">
+          <h3>🏛️ 44th Ward</h3>
+          <div class="resource-grid">
+            <div class="resource-item">
+              <span class="label">Alderman</span>
+              <span class="value">Bennett Lawson</span>
+            </div>
+            <div class="resource-item">
+              <span class="label">Phone</span>
+              <span class="value"><a href="tel:773-525-6034">773-525-6034</a></span>
+            </div>
+            <div class="resource-item">
+              <span class="label">Email</span>
+              <span class="value"><a href="mailto:ward44@cityofchicago.org">ward44@cityofchicago.org</a></span>
+            </div>
+            <div class="resource-item">
+              <span class="label">Office</span>
+              <span class="value">3223 N. Sheffield Ave, Suite A</span>
+            </div>
+            <div class="resource-item">
+              <span class="label">Website</span>
+              <span class="value"><a href="https://www.44thward.org/" target="_blank">44thward.org</a></span>
+            </div>
+          </div>
+        </div>
+
+        <div class="resource-section">
+          <h3>🏛️ 46th Ward</h3>
+          <div class="resource-grid">
+            <div class="resource-item">
+              <span class="label">Alderwoman</span>
+              <span class="value">Angela Clay</span>
+            </div>
+            <div class="resource-item">
+              <span class="label">Phone</span>
+              <span class="value"><a href="tel:773-878-4646">773-878-4646</a></span>
+            </div>
+            <div class="resource-item">
+              <span class="label">Email</span>
+              <span class="value"><a href="mailto:info@46thward.com">info@46thward.com</a></span>
+            </div>
+            <div class="resource-item">
+              <span class="label">Office</span>
+              <span class="value">4544 N. Broadway</span>
+            </div>
+            <div class="resource-item">
+              <span class="label">Website</span>
+              <span class="value"><a href="https://www.46thward.com/" target="_blank">46thward.com</a></span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Police Tab -->
+      <div class="tab-content" id="tab-police">
+        <div class="resource-section">
+          <h3>👮 19th District – Town Hall</h3>
+          <div class="resource-grid">
+            <div class="resource-item">
+              <span class="label">Station</span>
+              <span class="value">850 W. Addison St.</span>
+            </div>
+            <div class="resource-item">
+              <span class="label">Non-Emergency</span>
+              <span class="value"><a href="tel:312-744-8320">312-744-8320</a></span>
+            </div>
+            <div class="resource-item">
+              <span class="label">Coverage</span>
+              <span class="value">Lawrence to Fullerton, river to lake</span>
+            </div>
+            <div class="resource-item">
+              <span class="label">CAPS Info</span>
+              <span class="value"><a href="https://chicagocaps19.org/" target="_blank">chicagocaps19.org</a></span>
+            </div>
+          </div>
+          <p style="margin-top: 1rem; font-size: 0.9rem; color: var(--color-text-muted);">
+            <strong>Beat Meetings:</strong> Monthly community policing meetings. Find your beat at 
+            <a href="https://www.chicagopolice.org/police-districts/find-your-district/" target="_blank">chicagopolice.org</a>
+          </p>
+        </div>
+      </div>
+
+      <!-- 311 Tab -->
+      <div class="tab-content" id="tab-311">
+        <div class="resource-section">
+          <h3>📱 CHI 311 – Report Issues</h3>
+          <div class="resource-grid">
+            <div class="resource-item">
+              <span class="label">Website</span>
+              <span class="value"><a href="https://311.chicago.gov" target="_blank">311.chicago.gov</a></span>
+            </div>
+            <div class="resource-item">
+              <span class="label">Phone</span>
+              <span class="value"><a href="tel:311">311</a></span>
+            </div>
+            <div class="resource-item">
+              <span class="label">iOS App</span>
+              <span class="value"><a href="https://apps.apple.com/us/app/chi311/id1441580123" target="_blank">Download</a></span>
+            </div>
+            <div class="resource-item">
+              <span class="label">Android App</span>
+              <span class="value"><a href="https://play.google.com/store/apps/details?id=org.cityofchicago.chi311" target="_blank">Download</a></span>
+            </div>
+          </div>
+          <p style="margin-top: 1rem; font-size: 0.9rem; color: var(--color-text-muted);">
+            <strong>Pro tip:</strong> Use the app to snap a photo and pin the exact location for faster service.
+          </p>
+          <div class="quick-actions">
+            <span class="quick-action">🕳️ Pothole</span>
+            <span class="quick-action">💡 Streetlight Out</span>
+            <span class="quick-action">🎨 Graffiti</span>
+            <span class="quick-action">🌳 Tree Trimming</span>
+            <span class="quick-action">🐀 Rodent Issue</span>
+            <span class="quick-action">🚗 Abandoned Car</span>
+            <span class="quick-action">🗑️ Garbage Cart</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Schools Tab -->
+      <div class="tab-content" id="tab-schools">
+        <div class="resource-section">
+          <h3>🎓 Schools</h3>
+          <p style="margin-bottom: 1rem; color: var(--color-text-muted);">CPS schools are assigned by address. Look up your specific school:</p>
+          <a href="https://schoolinfo.cps.edu/schoollocator/index.html" target="_blank" class="btn" style="margin-bottom: 1.5rem;">
+            CPS School Locator
+            <svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"/></svg>
+          </a>
+          <h4 style="font-size: 0.9rem; color: var(--color-text-muted); margin-bottom: 0.75rem; font-weight: 600;">Nearby Schools:</h4>
+          <ul style="list-style: none; font-size: 0.95rem;">
+            <li style="padding: 0.5rem 0; border-bottom: 1px solid var(--color-border);">
+              <strong>Hawthorne Scholastic Academy</strong> – K-8<br>
+              <span style="color: var(--color-text-muted);">3319 N. Clifton Ave</span>
+            </li>
+            <li style="padding: 0.5rem 0; border-bottom: 1px solid var(--color-border);">
+              <strong>Harriet Tubman Elementary</strong> – PK-8<br>
+              <span style="color: var(--color-text-muted);">2851 N. Seminary Ave</span>
+            </li>
+            <li style="padding: 0.5rem 0;">
+              <strong>Lake View High School</strong> – 9-12<br>
+              <span style="color: var(--color-text-muted);">4015 N. Ashland Ave</span>
+            </li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- Emergency Tab -->
+      <div class="tab-content" id="tab-emergency">
+        <div class="resource-section">
+          <h3>🚨 Emergency Contacts</h3>
+          <div class="resource-grid">
+            <div class="resource-item">
+              <span class="label">Emergency</span>
+              <span class="value" style="font-size: 1.25rem; font-weight: 600; color: var(--color-accent);"><a href="tel:911">911</a></span>
+            </div>
+            <div class="resource-item">
+              <span class="label">Non-Emergency Police</span>
+              <span class="value"><a href="tel:312-744-8320">312-744-8320</a></span>
+            </div>
+            <div class="resource-item">
+              <span class="label">City Services (311)</span>
+              <span class="value"><a href="tel:311">311</a></span>
+            </div>
+            <div class="resource-item">
+              <span class="label">Poison Control</span>
+              <span class="value"><a href="tel:1-800-222-1222">1-800-222-1222</a></span>
+            </div>
+            <div class="resource-item">
+              <span class="label">ComEd Outages</span>
+              <span class="value"><a href="tel:1-800-334-7661">1-800-334-7661</a></span>
+            </div>
+            <div class="resource-item">
+              <span class="label">Peoples Gas Emergency</span>
+              <span class="value"><a href="tel:1-866-556-6002">1-866-556-6002</a></span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Block Party Section -->
+    <section id="block-party">
+      <h2><span class="icon">🎉</span> Block Party</h2>
+      
+      <div class="resource-section">
+        <h3>Twice a Year, We Party</h3>
+        <p style="margin-bottom: 1rem;">We host casual block parties in early summer and fall. Tables in the street, neighbors with dishes to share, kids running around. Simple and fun.</p>
+        
+        <h4 style="font-size: 1rem; color: var(--color-text); margin: 1.5rem 0 0.75rem; font-weight: 600;">How it works:</h4>
+        <ul style="list-style: none; font-size: 0.95rem;">
+          <li style="padding: 0.4rem 0;">✓ Permits are free (handled through the alderman's office)</li>
+          <li style="padding: 0.4rem 0;">✓ Street closure: typically 10am-10pm</li>
+          <li style="padding: 0.4rem 0;">✓ Bring a dish, a chair, and good vibes</li>
+          <li style="padding: 0.4rem 0;">✗ No fireworks (they're illegal and can get future permits denied)</li>
+        </ul>
+
+        <h4 style="font-size: 1rem; color: var(--color-text); margin: 1.5rem 0 0.75rem; font-weight: 600;">Official Resources:</h4>
+        <ul style="list-style: none; font-size: 0.95rem;">
+          <li style="padding: 0.4rem 0;">
+            <a href="https://www.chicago.gov/city/en/depts/cdot/provdrs/construction_information/svcs/block_party_permitinformation.html" target="_blank">City Block Party Permit Info</a>
+          </li>
+          <li style="padding: 0.4rem 0;">
+            <a href="https://www.44thward.org/resources/block-parties/" target="_blank">44th Ward Block Party Resources</a>
+          </li>
+          <li style="padding: 0.4rem 0;">
+            Contact: <a href="mailto:Esmeralda.Borrero@cityofchicago.org">Esmeralda.Borrero@cityofchicago.org</a>
+          </li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- Connect / CTA Section -->
+    <section id="connect" class="cta-section">
+      <h2>Stay Connected</h2>
+      <p>Get occasional updates about block happenings—a few emails per year, max. We're privacy-conscious and won't share your info.</p>
+      <a href="#signup-form" class="btn">
+        <svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/></svg>
+        Sign Up for Updates
+      </a>
+      <p style="margin-top: 1.5rem; font-size: 0.9rem; color: var(--color-text-muted);">
+        Got an idea for the block? <a href="mailto:hello@corneliablock.club">Drop us a line</a>.
+      </p>
+    </section>
+
+    <!-- Neighborhood Organizations -->
+    <section>
+      <h2><span class="icon">🏘️</span> Neighborhood Organizations</h2>
+      <div class="cards">
+        <a href="https://eastlakeview.org/" target="_blank" class="card">
+          <h3>East Lakeview Neighbors</h3>
+          <p>Our broader neighborhood association. Meetings, events, and advocacy for East Lakeview.</p>
+          <span class="card-link">
+            eastlakeview.org
+            <svg fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"/></svg>
+          </span>
+        </a>
+        <a href="https://lakeviewcitizens.org/" target="_blank" class="card">
+          <h3>Lakeview Citizens Council</h3>
+          <p>Umbrella organization for all Lakeview neighborhood groups.</p>
+          <span class="card-link">
+            lakeviewcitizens.org
+            <svg fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"/></svg>
+          </span>
+        </a>
+        <a href="https://lakevieweast.com/" target="_blank" class="card">
+          <h3>Lakeview East Chamber</h3>
+          <p>Local business association for Lakeview East.</p>
+          <span class="card-link">
+            lakevieweast.com
+            <svg fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"/></svg>
+          </span>
+        </a>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="footer-inner">
+      <div class="footer-brand">Cornelia Block Club</div>
+      <div class="footer-links">
+        <a href="#home">Home</a>
+        <a href="#resources">Resources</a>
+        <a href="#block-party">Block Party</a>
+        <a href="#connect">Connect</a>
+      </div>
+      <div class="footer-note">
+        Cornelia Ave between Elaine Place & Broadway · East Lakeview, Chicago 60657<br>
+        Made with 🌳 by neighbors, for neighbors
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    // Tab functionality
+    document.querySelectorAll('.tab-btn').forEach(btn => {
+      btn.addEventListener('click', () => {
+        const tabId = btn.dataset.tab;
+        
+        // Update buttons
+        document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+        btn.classList.add('active');
+        
+        // Update content
+        document.querySelectorAll('.tab-content').forEach(c => c.classList.remove('active'));
+        document.getElementById(`tab-${tabId}`).classList.add('active');
+      });
+    });
+
+    // Smooth scroll for nav links
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+      anchor.addEventListener('click', function(e) {
+        e.preventDefault();
+        const target = document.querySelector(this.getAttribute('href'));
+        if (target) {
+          target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+          // Close mobile nav if open
+          document.querySelector('nav').classList.remove('open');
+        }
+      });
+    });
+
+    // Update active nav on scroll
+    const sections = document.querySelectorAll('section[id], .hero[id]');
+    const navLinks = document.querySelectorAll('nav a');
+
+    window.addEventListener('scroll', () => {
+      let current = '';
+      sections.forEach(section => {
+        const sectionTop = section.offsetTop - 100;
+        if (scrollY >= sectionTop) {
+          current = section.getAttribute('id');
+        }
+      });
+
+      navLinks.forEach(link => {
+        link.classList.remove('active');
+        if (link.getAttribute('href') === `#${current}`) {
+          link.classList.add('active');
+        }
+      });
+    });
+  </script>
+</body>
+</html>
